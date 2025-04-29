@@ -29,7 +29,6 @@ This project was inspired by and built following the [Next.js Tutorial 2025 - Bu
 ![Screenshot (395)](https://github.com/user-attachments/assets/222a793d-b635-4598-8fa9-65924ed3d0c0)
 ![Screenshot (394)](https://github.com/user-attachments/assets/5f8355f1-168e-4bd2-aa33-2523c5ce1b16)
 
-
 ## 🚀 Highlights
 
 * **Blazing Fast Tech Stack**: Built with the latest **Next.js App Router**, robust **Postgres** database managed by **Prisma**, seamless authentication via **Clerk**, and strongly typed with **TypeScript**.
