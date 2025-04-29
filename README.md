@@ -65,7 +65,7 @@ To get Socially up and running on your local machine, follow these steps:
     pnpm install
     ```
 
-3.  Set up your `.env` file by copying the `.env.example` and filling in your environment variables:
+3.  Set up your `.env` file by creating the file in the root directory and filling in your environment variables:
 
     ```env
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
