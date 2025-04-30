@@ -6,17 +6,11 @@ import {
 } from "@/actions/profile.action";
 import { notFound } from "next/navigation";
 import ProfilePageClient from "./ProfilePageClient";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
-// Dynamic route prop typing
-interface ProfilePageProps {
-  params: {
-    username: string;
-  };
-}
+// No custom type alias — directly destructure params
 
-// Generate dynamic metadata
-export async function generateMetadata({ params }: ProfilePageProps): Promise<Metadata | undefined> {
+export async function generateMetadata({ params }: { params: { username: string } }): Promise<Metadata | undefined> {
   const user = await getProfileByUsername(params.username);
   if (!user) return;
 
@@ -26,8 +20,7 @@ export async function generateMetadata({ params }: ProfilePageProps): Promise<Me
   };
 }
 
-// Server Component for dynamic profile page
-export default async function ProfilePage({ params }: ProfilePageProps) {
+export default async function ProfilePage({ params }: { params: { username: string } }) {
   const user = await getProfileByUsername(params.username);
   if (!user) notFound();
 
