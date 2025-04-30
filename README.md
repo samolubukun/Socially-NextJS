@@ -10,7 +10,6 @@
 
 **Socially** is a cutting-edge social media application meticulously crafted with **Next.js**. Experience seamless user interaction with features spanning authentication, dynamic post creation, engaging commenting and liking, real-time notifications, and comprehensive profile management. Dive into a codebase engineered for performance and scalability.
 
-
 This project was inspired by and built following the [Next.js Tutorial 2025 - Build a Full Stack Social App with React & Next.js](https://youtu.be/vUYopHWOURg?si=J6ptvPg85ndzibMV).
 
 ## ✨ Key Features
