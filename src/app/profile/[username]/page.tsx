@@ -6,14 +6,13 @@ import {
 } from "@/actions/profile.action";
 import { notFound } from "next/navigation";
 import ProfilePageClient from "./ProfilePageClient";
+import { PageProps } from "next/types"; // Import PageProps from Next.js
 
-interface PageProps {
-  params: {
-    username: string;
-  };
+interface ProfilePageParams {
+  username: string;
 }
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params }: PageProps<ProfilePageParams>) {
   const user = await getProfileByUsername(params.username);
   if (!user) return;
 
@@ -23,7 +22,7 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-async function ProfilePageServer({ params }: PageProps) {
+async function ProfilePageServer({ params }: PageProps<ProfilePageParams>) {
   const user = await getProfileByUsername(params.username);
 
   if (!user) notFound();
