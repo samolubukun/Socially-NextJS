@@ -7,7 +7,15 @@ import {
 import { notFound } from "next/navigation";
 import ProfilePageClient from "./ProfilePageClient";
 
-export async function generateMetadata({ params }: { params: { username: string } }) {
+// Define the correct type for Next.js page props
+type PageProps = {
+  params: {
+    username: string;
+  };
+};
+
+// Generate metadata for dynamic routes
+export async function generateMetadata({ params }: PageProps) {
   const user = await getProfileByUsername(params.username);
   if (!user) return;
 
@@ -17,7 +25,8 @@ export async function generateMetadata({ params }: { params: { username: string 
   };
 }
 
-async function ProfilePageServer({ params }: { params: { username: string } }) {
+// Server component to fetch profile data
+async function ProfilePageServer({ params }: PageProps) {
   const user = await getProfileByUsername(params.username);
 
   if (!user) notFound();
@@ -37,4 +46,5 @@ async function ProfilePageServer({ params }: { params: { username: string } }) {
     />
   );
 }
+
 export default ProfilePageServer;
