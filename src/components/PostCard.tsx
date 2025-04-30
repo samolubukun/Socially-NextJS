@@ -2,7 +2,7 @@
 
 import { createComment, deletePost, getPosts, toggleLike } from "@/actions/post.action";
 import { SignInButton, useUser } from "@clerk/nextjs";
-import { useState, useEffect } from "react"; // Import useEffect
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { Card, CardContent } from "./ui/card";
 import Link from "next/link";
@@ -25,13 +25,6 @@ function PostCard({ post, dbUserId }: { post: Post; dbUserId: string | null }) {
   const [hasLiked, setHasLiked] = useState(post.likes.some((like) => like.userId === dbUserId));
   const [optimisticLikes, setOptmisticLikes] = useState(post._count.likes);
   const [showComments, setShowComments] = useState(false);
-  const [relativeTime, setRelativeTime] = useState<string | null>(null); // New state
-
-  useEffect(() => {
-    if (post?.createdAt) {
-      setRelativeTime(formatDistanceToNow(new Date(post.createdAt)) + ' ago');
-    }
-  }, [post?.createdAt]);
 
   const handleLike = async () => {
     if (isLiking) return;
@@ -102,7 +95,7 @@ function PostCard({ post, dbUserId }: { post: Post; dbUserId: string | null }) {
                   <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                     <Link href={`/profile/${post.author.username}`}>@{post.author.username}</Link>
                     <span>•</span>
-                    <span>{relativeTime ? relativeTime : formatDistanceToNow(new Date(post.createdAt)) + ' ago'}</span> {/* Conditional rendering */}
+                    <span>{formatDistanceToNow(new Date(post.createdAt))} ago</span>
                   </div>
                 </div>
                 {/* Check if current user is the post author */}
